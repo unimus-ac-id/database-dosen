@@ -1,0 +1,1925 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Northcentral University | Student Portal</title>
+
+<!-- Google Font -->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<!-- Font Awesome -->
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+<style>
+
+/* ==========================================================
+   NORTHCENTRAL UNIVERSITY
+   STUDENT ACADEMIC PORTAL
+   Single HTML Project
+   HTML + CSS + JavaScript
+   ========================================================== */
+
+*{
+
+margin:0;
+
+padding:0;
+
+box-sizing:border-box;
+
+font-family:'Poppins',sans-serif;
+
+}
+
+html{
+
+scroll-behavior:smooth;
+
+}
+
+body{
+
+background:linear-gradient(135deg,#dbeafe,#eff6ff);
+
+min-height:100vh;
+
+overflow-x:hidden;
+
+color:#1e293b;
+
+transition:.35s;
+
+}
+
+body.dark{
+
+background:#0f172a;
+
+color:#f8fafc;
+
+}
+
+/* ============================= */
+
+.hidden{
+
+display:none!important;
+
+}
+
+/* ============================= */
+
+.login-page{
+
+position:fixed;
+
+top:0;
+
+left:0;
+
+width:100%;
+
+height:100%;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+background:
+
+linear-gradient(rgba(37,99,235,.82),rgba(37,99,235,.82)),
+
+url("https://images.unsplash.com/photo-1498243691581-b145c3f54a5a?auto=format&fit=crop&w=1600&q=80");
+
+background-size:cover;
+
+background-position:center;
+
+z-index:999;
+
+padding:20px;
+
+}
+
+.login-card{
+
+width:430px;
+
+max-width:100%;
+
+padding:40px;
+
+border-radius:28px;
+
+background:rgba(255,255,255,.18);
+
+backdrop-filter:blur(18px);
+
+border:1px solid rgba(255,255,255,.25);
+
+box-shadow:0 20px 50px rgba(0,0,0,.18);
+
+animation:fadeUp .8s;
+
+}
+
+.logo{
+
+width:90px;
+
+height:90px;
+
+margin:auto;
+
+margin-bottom:20px;
+
+border-radius:50%;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+font-size:34px;
+
+background:white;
+
+color:#2563eb;
+
+font-weight:bold;
+
+}
+
+.login-title{
+
+text-align:center;
+
+font-size:28px;
+
+font-weight:700;
+
+color:white;
+
+}
+
+.login-subtitle{
+
+text-align:center;
+
+color:white;
+
+opacity:.9;
+
+margin-top:8px;
+
+margin-bottom:30px;
+
+font-size:14px;
+
+}
+
+.input-group{
+
+margin-bottom:20px;
+
+}
+
+.input-group label{
+
+display:block;
+
+font-size:14px;
+
+margin-bottom:8px;
+
+color:white;
+
+font-weight:500;
+
+}
+
+.input-group input{
+
+width:100%;
+
+height:55px;
+
+border:none;
+
+outline:none;
+
+padding:0 18px;
+
+border-radius:14px;
+
+font-size:15px;
+
+}
+
+.login-option{
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+margin-bottom:25px;
+
+color:white;
+
+font-size:14px;
+
+}
+
+.login-option a{
+
+text-decoration:none;
+
+color:white;
+
+}
+
+.signin{
+
+width:100%;
+
+height:55px;
+
+border:none;
+
+border-radius:14px;
+
+cursor:pointer;
+
+font-size:16px;
+
+font-weight:700;
+
+background:white;
+
+color:#2563eb;
+
+transition:.3s;
+
+}
+
+.signin:hover{
+
+transform:translateY(-3px);
+
+box-shadow:0 12px 25px rgba(0,0,0,.2);
+
+}
+
+/* ============================= */
+
+.loading{
+
+position:fixed;
+
+top:0;
+
+left:0;
+
+width:100%;
+
+height:100%;
+
+display:none;
+
+justify-content:center;
+
+align-items:center;
+
+background:#2563eb;
+
+z-index:1000;
+
+flex-direction:column;
+
+color:white;
+
+}
+
+.loader{
+
+width:80px;
+
+height:80px;
+
+border-radius:50%;
+
+border:8px solid rgba(255,255,255,.2);
+
+border-top:8px solid white;
+
+animation:spin 1s linear infinite;
+
+margin-bottom:30px;
+
+}
+
+.progress{
+
+width:320px;
+
+height:12px;
+
+background:rgba(255,255,255,.2);
+
+border-radius:20px;
+
+overflow:hidden;
+
+margin-top:25px;
+
+}
+
+.progress div{
+
+width:0;
+
+height:100%;
+
+background:white;
+
+transition:.3s;
+
+}
+
+.loading-text{
+
+margin-top:15px;
+
+font-size:15px;
+
+}
+@keyframes spin{
+
+from{
+
+transform:rotate(0deg);
+
+}
+
+to{
+
+transform:rotate(360deg);
+
+}
+
+}
+
+@keyframes fadeUp{
+
+from{
+
+opacity:0;
+
+transform:translateY(30px);
+
+}
+
+to{
+
+opacity:1;
+
+transform:translateY(0);
+
+}
+
+}
+
+/* ==========================================================
+   DASHBOARD LAYOUT
+   ========================================================== */
+
+.portal{
+
+display:none;
+
+width:100%;
+
+min-height:100vh;
+
+}
+
+.sidebar{
+
+position:fixed;
+
+left:0;
+
+top:0;
+
+width:270px;
+
+height:100%;
+
+background:rgba(255,255,255,.88);
+
+backdrop-filter:blur(18px);
+
+box-shadow:0 0 25px rgba(0,0,0,.08);
+
+padding:25px;
+
+overflow:auto;
+
+transition:.35s;
+
+}
+
+body.dark .sidebar{
+
+background:#162033;
+
+}
+
+.sidebar-header{
+
+text-align:center;
+
+margin-bottom:30px;
+
+}
+
+.sidebar-logo{
+
+width:75px;
+
+height:75px;
+
+margin:auto;
+
+border-radius:50%;
+
+background:#2563eb;
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+font-size:28px;
+
+color:white;
+
+margin-bottom:15px;
+
+}
+
+.sidebar-header h2{
+
+font-size:18px;
+
+font-weight:700;
+
+}
+
+.sidebar-header p{
+
+font-size:13px;
+
+color:#64748b;
+
+margin-top:6px;
+
+}
+
+body.dark .sidebar-header p{
+
+color:#cbd5e1;
+
+}
+
+.sidebar-menu{
+
+list-style:none;
+
+margin-top:25px;
+
+}
+
+.sidebar-menu li{
+
+margin-bottom:8px;
+
+}
+
+.sidebar-menu a{
+
+display:flex;
+
+align-items:center;
+
+gap:14px;
+
+padding:14px 18px;
+
+text-decoration:none;
+
+color:#334155;
+
+font-weight:500;
+
+border-radius:14px;
+
+transition:.3s;
+
+}
+
+body.dark .sidebar-menu a{
+
+color:white;
+
+}
+
+.sidebar-menu a:hover{
+
+background:#2563eb;
+
+color:white;
+
+transform:translateX(4px);
+
+}
+
+.sidebar-menu a.active{
+
+background:#2563eb;
+
+color:white;
+
+}
+
+/* ==========================================================
+   MAIN CONTENT
+   ========================================================== */
+
+.main{
+
+margin-left:270px;
+
+padding:30px;
+
+transition:.35s;
+
+}
+
+.topbar{
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+margin-bottom:30px;
+
+flex-wrap:wrap;
+
+gap:20px;
+
+}
+
+.search-box{
+
+position:relative;
+
+width:320px;
+
+max-width:100%;
+
+}
+
+.search-box input{
+
+width:100%;
+
+height:50px;
+
+border:none;
+
+outline:none;
+
+padding-left:45px;
+
+border-radius:15px;
+
+background:white;
+
+box-shadow:0 10px 25px rgba(0,0,0,.06);
+
+}
+
+body.dark .search-box input{
+
+background:#1e293b;
+
+color:white;
+
+}
+
+.search-box i{
+
+position:absolute;
+
+left:15px;
+
+top:17px;
+
+color:#64748b;
+
+}
+
+.top-right{
+
+display:flex;
+
+align-items:center;
+
+gap:18px;
+
+flex-wrap:wrap;
+
+}
+
+.language{
+
+padding:10px 14px;
+
+border:none;
+
+border-radius:12px;
+
+cursor:pointer;
+
+}
+
+.dark-button{
+
+width:46px;
+
+height:46px;
+
+border:none;
+
+border-radius:50%;
+
+cursor:pointer;
+
+background:#2563eb;
+
+color:white;
+
+font-size:18px;
+
+}
+
+.avatar{
+
+display:flex;
+
+align-items:center;
+
+gap:12px;
+
+}
+
+.avatar img{
+
+width:52px;
+
+height:52px;
+
+border-radius:50%;
+
+object-fit:cover;
+
+border:3px solid #2563eb;
+
+}
+
+.avatar div h4{
+
+font-size:15px;
+
+}
+
+.avatar div p{
+
+font-size:13px;
+
+color:#64748b;
+
+}
+
+body.dark .avatar div p{
+
+color:#cbd5e1;
+
+}
+
+/* ==========================================================
+   PROFILE CARD
+   ========================================================== */
+
+.profile-card{
+
+background:rgba(255,255,255,.88);
+
+border-radius:24px;
+
+padding:35px;
+
+box-shadow:0 20px 45px rgba(0,0,0,.08);
+
+animation:fadeUp .7s;
+
+}
+
+body.dark .profile-card{
+
+background:#162033;
+
+}
+
+.profile-header{
+
+display:flex;
+
+align-items:center;
+
+gap:25px;
+
+flex-wrap:wrap;
+
+margin-bottom:35px;
+
+}
+
+.profile-header img{
+
+width:140px;
+
+height:140px;
+
+border-radius:20px;
+
+object-fit:cover;
+
+border:5px solid #2563eb;
+
+}
+
+.profile-header h2{
+
+font-size:30px;
+
+margin-bottom:6px;
+
+}
+
+.profile-header span{
+
+display:inline-block;
+
+padding:6px 14px;
+
+background:#2563eb;
+
+color:white;
+
+border-radius:30px;
+
+font-size:13px;
+
+margin-top:10px;
+
+  }
+  
+.profile-grid{
+
+display:grid;
+
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+
+gap:22px;
+
+margin-top:20px;
+
+}
+
+.info-box{
+
+background:#f8fbff;
+
+border-left:5px solid #2563eb;
+
+padding:18px 20px;
+
+border-radius:16px;
+
+transition:.30s;
+
+}
+
+body.dark .info-box{
+
+background:#1e293b;
+
+}
+
+.info-box:hover{
+
+transform:translateY(-5px);
+
+box-shadow:0 15px 25px rgba(0,0,0,.08);
+
+}
+
+.info-title{
+
+font-size:12px;
+
+font-weight:600;
+
+letter-spacing:.5px;
+
+text-transform:uppercase;
+
+color:#64748b;
+
+margin-bottom:8px;
+
+}
+
+body.dark .info-title{
+
+color:#cbd5e1;
+
+}
+
+.info-value{
+
+font-size:17px;
+
+font-weight:600;
+
+line-height:1.6;
+
+}
+
+/* ==========================================================
+   COMING SOON CARD
+   ========================================================== */
+
+.coming-soon{
+
+display:none;
+
+background:rgba(255,255,255,.90);
+
+padding:40px;
+
+border-radius:24px;
+
+text-align:center;
+
+box-shadow:0 20px 45px rgba(0,0,0,.08);
+
+animation:fadeUp .5s;
+
+}
+
+body.dark .coming-soon{
+
+background:#162033;
+
+}
+
+.coming-soon i{
+
+font-size:70px;
+
+color:#2563eb;
+
+margin-bottom:20px;
+
+}
+
+.coming-soon h2{
+
+font-size:30px;
+
+margin-bottom:15px;
+
+}
+
+.coming-soon p{
+
+max-width:650px;
+
+margin:auto;
+
+line-height:1.8;
+
+color:#64748b;
+
+}
+
+body.dark .coming-soon p{
+
+color:#cbd5e1;
+
+}
+
+/* ==========================================================
+   MOBILE
+   ========================================================== */
+
+@media(max-width:980px){
+
+.sidebar{
+
+left:-270px;
+
+}
+
+.sidebar.show{
+
+left:0;
+
+}
+
+.main{
+
+margin-left:0;
+
+padding:20px;
+
+}
+
+.topbar{
+
+flex-direction:column;
+
+align-items:flex-start;
+
+}
+
+.search-box{
+
+width:100%;
+
+}
+
+}
+
+@media(max-width:700px){
+
+.profile-header{
+
+flex-direction:column;
+
+text-align:center;
+
+}
+
+.profile-header img{
+
+width:120px;
+
+height:120px;
+
+}
+
+.profile-grid{
+
+grid-template-columns:1fr;
+
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- =======================================================
+LOGIN PAGE
+======================================================= -->
+
+<div class="login-page" id="loginPage">
+
+<div class="login-card">
+
+<div class="logo">
+
+<i class="fa-solid fa-graduation-cap"></i>
+
+</div>
+
+<h1 class="login-title" id="loginTitle">
+
+Northcentral University
+
+</h1>
+
+<p class="login-subtitle" id="loginSubtitle">
+
+Student Academic Portal
+
+</p>
+
+<div class="input-group">
+
+<label id="emailLabel">
+
+Campus Email
+
+</label>
+
+<input
+
+type="email"
+
+id="email"
+
+value="muhammad.agil@ncu.edu"
+
+>
+
+</div>
+
+<div class="input-group">
+
+<label id="passwordLabel">
+
+Password
+
+</label>
+
+<input
+
+type="password"
+
+id="password"
+
+placeholder="Enter Password"
+
+>
+
+</div>
+
+<div class="login-option">
+
+<label>
+
+<input type="checkbox">
+
+Remember Me
+
+</label>
+
+<a href="#">
+
+Forgot Password?
+
+</a>
+
+</div>
+
+<button
+
+class="signin"
+
+id="loginButton">
+
+Sign In
+
+</button>
+
+</div>
+
+</div>
+
+<!-- =======================================================
+LOADING
+======================================================= -->
+
+<div class="loading" id="loadingPage">
+
+<div class="loader"></div>
+
+<h2 id="loadingTitle">
+
+Authenticating...
+
+</h2>
+
+<div class="progress">
+
+<div id="progressBar"></div>
+
+</div>
+
+<p class="loading-text" id="loadingPercent">
+
+0%
+
+</p>
+
+</div>
+
+<!-- =======================================================
+PORTAL START
+======================================================= -->
+
+<div class="portal" id="portal">
+
+<!-- Sidebar akan dilanjutkan -->
+  
+<div class="sidebar" id="sidebar">
+
+<div class="sidebar-header">
+
+<div class="sidebar-logo">
+
+<i class="fa-solid fa-building-columns"></i>
+
+</div>
+
+<h2 id="sidebarUniversity">
+
+Northcentral University
+
+</h2>
+
+<p id="sidebarPortal">
+
+Student Academic Portal
+
+</p>
+
+</div>
+
+<ul class="sidebar-menu">
+
+<li>
+<a href="#" class="menu active" data-page="profile">
+<i class="fa-solid fa-user-graduate"></i>
+<span id="menuProfile">Student Profile</span>
+</a>
+</li>
+
+<li>
+<a href="#" class="menu" data-page="dashboard">
+<i class="fa-solid fa-table-columns"></i>
+<span id="menuDashboard">Dashboard</span>
+</a>
+</li>
+
+<li>
+<a href="#" class="menu" data-page="record">
+<i class="fa-solid fa-book-open"></i>
+<span id="menuRecord">Academic Record</span>
+</a>
+</li>
+
+<li>
+<a href="#" class="menu" data-page="transcript">
+<i class="fa-solid fa-file-lines"></i>
+<span id="menuTranscript">Transcript</span>
+</a>
+</li>
+
+<li>
+<a href="#" class="menu" data-page="schedule">
+<i class="fa-solid fa-calendar-days"></i>
+<span id="menuSchedule">Schedule</span>
+</a>
+</li>
+
+<li>
+<a href="#" class="menu" data-page="finance">
+<i class="fa-solid fa-wallet"></i>
+<span id="menuFinance">Finance</span>
+</a>
+</li>
+
+<li>
+<a href="#" class="menu" data-page="library">
+<i class="fa-solid fa-book"></i>
+<span id="menuLibrary">Library</span>
+</a>
+</li>
+
+<li>
+<a href="#" class="menu" data-page="settings">
+<i class="fa-solid fa-gear"></i>
+<span id="menuSettings">Settings</span>
+</a>
+</li>
+
+<li>
+<a href="#" id="logout">
+<i class="fa-solid fa-right-from-bracket"></i>
+<span id="menuLogout">Logout</span>
+</a>
+</li>
+
+</ul>
+
+</div>
+
+<div class="main">
+
+<div class="topbar">
+
+<div class="search-box">
+
+<i class="fa-solid fa-magnifying-glass"></i>
+
+<input
+type="text"
+placeholder="Search...">
+
+</div>
+
+<div class="top-right">
+
+<select
+class="language"
+id="language">
+
+<option value="en">
+
+English
+
+</option>
+
+<option value="id">
+
+Bahasa Indonesia
+
+</option>
+
+</select>
+
+<button
+class="dark-button"
+id="darkButton">
+
+<i class="fa-solid fa-moon"></i>
+
+</button>
+
+<div class="avatar">
+
+<img
+src="https://i.pravatar.cc/300?img=12"
+alt="Student">
+
+<div>
+
+<h4>
+
+Muhammad Agil
+
+</h4>
+
+<p>
+
+Ph.D Student
+
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- ============================= -->
+<!-- PROFILE PAGE -->
+<!-- ============================= -->
+
+<div
+class="profile-card"
+id="profilePage">
+
+<div class="profile-header">
+
+<img
+src="https://i.pravatar.cc/500?img=12"
+alt="Student">
+
+<div>
+
+<h2>
+
+Muhammad Agil
+
+</h2>
+
+<p id="studentProgram">
+
+Ph.D. in Human Resource Management
+
+</p>
+
+<span id="studentStatus">
+
+Active Student
+
+</span>
+
+</div>
+
+</div>
+
+<div class="profile-grid">
+
+<div class="info-box">
+
+<div class="info-title" id="titleStudentId">
+
+Student ID
+
+</div>
+
+<div class="info-value">
+
+NCU26005184
+
+</div>
+
+</div>
+
+<div class="info-box">
+
+<div class="info-title" id="titleEmail">
+
+Campus Email
+
+</div>
+
+<div class="info-value">
+
+muhammad.agil@ncu.edu
+
+</div>
+
+</div>
+
+<div class="info-box">
+
+<div class="info-title" id="titleNationality">
+
+Nationality
+
+</div>
+
+<div class="info-value">
+
+Indonesia
+
+</div>
+
+</div>
+
+<div class="info-box">
+
+<div class="info-title" id="titleBirth">
+
+Date of Birth
+
+</div>
+
+<div class="info-value">
+
+05 June 2002
+
+</div>
+
+</div>
+
+<div class="info-box">
+
+<div class="info-title" id="titleUniversity">
+
+University
+
+</div>
+
+<div class="info-value">
+
+Northcentral University
+
+</div>
+
+</div>
+
+<div class="info-box">
+
+<div class="info-title" id="titleFaculty">
+
+Faculty
+
+</div>
+
+<div class="info-value">
+
+Graduate School
+
+</div>
+
+</div>
+
+<div class="info-box">
+
+<div class="info-title" id="titleAdvisor">
+
+Academic Advisor
+
+</div>
+
+<div class="info-value">
+
+Dr. Emily Carter
+
+</div>
+
+</div>
+
+<div class="info-box">
+
+<div class="info-title" id="titleSemester">
+
+Current Semester
+
+</div>
+
+<div class="info-value">
+
+Semester 2
+
+</div>
+
+</div>
+
+<div class="info-box">
+
+<div class="info-title" id="titleCredits">
+
+Credits Earned
+
+</div>
+
+<div class="info-value">
+
+18 Credits
+
+</div>
+
+</div>
+
+<div class="info-box">
+
+<div class="info-title" id="titleGpa">
+
+Overall GPA
+
+</div>
+
+<div class="info-value">
+
+4.00 / 4.00
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- Halaman lain (Dashboard, Record, Transcript, dll.) akan berupa kartu "Coming Soon" -->
+  
+<!-- =======================================================
+DUMMY PAGES
+======================================================= -->
+
+<div class="coming-soon" id="dashboardPage">
+
+<i class="fa-solid fa-chart-line"></i>
+
+<h2 id="dashboardTitle">
+
+Dashboard
+
+</h2>
+
+<p id="dashboardDescription">
+
+This module is available in the complete version of the Student Academic Portal.
+
+</p>
+
+</div>
+
+<div class="coming-soon" id="recordPage">
+
+<i class="fa-solid fa-book-open-reader"></i>
+
+<h2 id="recordTitle">
+
+Academic Record
+
+</h2>
+
+<p id="recordDescription">
+
+Academic record information will be displayed in the full version.
+
+</p>
+
+</div>
+
+<div class="coming-soon" id="transcriptPage">
+
+<i class="fa-solid fa-file-lines"></i>
+
+<h2 id="transcriptTitle">
+
+Transcript
+
+</h2>
+
+<p id="transcriptDescription">
+
+Official transcript is available in the complete system.
+
+</p>
+
+</div>
+
+<div class="coming-soon" id="schedulePage">
+
+<i class="fa-solid fa-calendar-days"></i>
+
+<h2 id="scheduleTitle">
+
+Schedule
+
+</h2>
+
+<p id="scheduleDescription">
+
+Weekly schedule will appear here.
+
+</p>
+
+</div>
+
+<div class="coming-soon" id="financePage">
+
+<i class="fa-solid fa-wallet"></i>
+
+<h2 id="financeTitle">
+
+Finance
+
+</h2>
+
+<p id="financeDescription">
+
+Financial information is available in the complete version.
+
+</p>
+
+</div>
+
+<div class="coming-soon" id="libraryPage">
+
+<i class="fa-solid fa-book"></i>
+
+<h2 id="libraryTitle">
+
+Library
+
+</h2>
+
+<p id="libraryDescription">
+
+Library services are currently unavailable.
+
+</p>
+
+</div>
+
+<div class="coming-soon" id="settingsPage">
+
+<i class="fa-solid fa-gear"></i>
+
+<h2 id="settingsTitle">
+
+Settings
+
+</h2>
+
+<p id="settingsDescription">
+
+Profile settings will be available in the complete version.
+
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- =======================================================
+JAVASCRIPT
+======================================================= -->
+
+<script>
+
+const EMAIL="muhammad.agil@ncu.edu";
+
+const PASSWORD="NCU2026!";
+
+const loginButton=document.getElementById("loginButton");
+
+const loginPage=document.getElementById("loginPage");
+
+const loadingPage=document.getElementById("loadingPage");
+
+const portal=document.getElementById("portal");
+
+const progress=document.getElementById("progressBar");
+
+const percent=document.getElementById("loadingPercent");
+
+const loadingTitle=document.getElementById("loadingTitle");
+
+loginButton.onclick=function(){
+
+const email=document.getElementById("email").value.trim();
+
+const password=document.getElementById("password").value;
+
+if(email!==EMAIL||password!==PASSWORD){
+
+alert("Incorrect Campus Email or Password.");
+
+return;
+
+}
+
+loginPage.style.display="none";
+
+loadingPage.style.display="flex";
+
+const text=[
+
+"Authenticating...",
+
+"Loading Student Profile...",
+
+"Preparing Dashboard...",
+
+"Login Success"
+
+];
+
+let value=0;
+
+let index=0;
+
+const timer=setInterval(()=>{
+
+value++;
+
+progress.style.width=value+"%";
+
+percent.innerHTML=value+"%";
+
+if(value%25===0&&index<text.length){
+
+loadingTitle.innerHTML=text[index];
+
+index++;
+
+}
+
+if(value>=100){
+
+clearInterval(timer);
+
+setTimeout(()=>{
+
+loadingPage.style.display="none";
+
+portal.style.display="flex";
+
+},300);
+
+}
+
+},30);
+
+};
+
+const menu=document.querySelectorAll(".menu");
+
+const profile=document.getElementById("profilePage");
+
+const pages={
+
+dashboard:document.getElementById("dashboardPage"),
+
+record:document.getElementById("recordPage"),
+
+transcript:document.getElementById("transcriptPage"),
+
+schedule:document.getElementById("schedulePage"),
+
+finance:document.getElementById("financePage"),
+
+library:document.getElementById("libraryPage"),
+
+settings:document.getElementById("settingsPage")
+
+};
+
+menu.forEach(item=>{
+
+item.onclick=function(e){
+
+e.preventDefault();
+
+menu.forEach(m=>m.classList.remove("active"));
+
+this.classList.add("active");
+
+profile.style.display="none";
+
+Object.values(pages).forEach(p=>p.style.display="none");
+
+if(this.dataset.page==="profile"){
+
+profile.style.display="block";
+
+}else{
+
+pages[this.dataset.page].style.display="block";
+
+}
+
+};
+
+});
+
+document.getElementById("darkButton").onclick=function(){
+
+document.body.classList.toggle("dark");
+
+};
+
+const language=document.getElementById("language");
+
+language.onchange=function(){
+
+if(this.value==="id"){
+
+document.documentElement.lang="id";
+
+document.getElementById("loginSubtitle").innerHTML="Portal Akademik Mahasiswa";
+
+document.getElementById("emailLabel").innerHTML="Email Kampus";
+
+document.getElementById("passwordLabel").innerHTML="Kata Sandi";
+
+loginButton.innerHTML="Masuk";
+
+document.getElementById("menuProfile").innerHTML="Profil Mahasiswa";
+
+document.getElementById("menuDashboard").innerHTML="Dashboard";
+
+document.getElementById("menuRecord").innerHTML="Rekam Akademik";
+
+document.getElementById("menuTranscript").innerHTML="Transkrip";
+
+document.getElementById("menuSchedule").innerHTML="Jadwal";
+
+document.getElementById("menuFinance").innerHTML="Keuangan";
+
+document.getElementById("menuLibrary").innerHTML="Perpustakaan";
+
+document.getElementById("menuSettings").innerHTML="Pengaturan";
+
+document.getElementById("menuLogout").innerHTML="Keluar";
+
+document.getElementById("studentStatus").innerHTML="Mahasiswa Aktif";
+
+document.getElementById("titleStudentId").innerHTML="Nomor Induk Mahasiswa";
+
+document.getElementById("titleEmail").innerHTML="Email Kampus";
+
+document.getElementById("titleNationality").innerHTML="Kewarganegaraan";
+
+document.getElementById("titleBirth").innerHTML="Tanggal Lahir";
+
+document.getElementById("titleUniversity").innerHTML="Universitas";
+
+document.getElementById("titleFaculty").innerHTML="Fakultas";
+
+document.getElementById("titleAdvisor").innerHTML="Dosen Pembimbing";
+
+document.getElementById("titleSemester").innerHTML="Semester Saat Ini";
+
+document.getElementById("titleCredits").innerHTML="Total SKS";
+
+document.getElementById("titleGpa").innerHTML="IPK";
+
+document.getElementById("dashboardDescription").innerHTML="Modul ini tersedia pada versi lengkap Portal Akademik.";
+
+document.getElementById("recordDescription").innerHTML="Informasi akademik akan tersedia pada versi lengkap.";
+
+document.getElementById("transcriptDescription").innerHTML="Transkrip resmi tersedia pada sistem lengkap.";
+
+document.getElementById("scheduleDescription").innerHTML="Jadwal perkuliahan akan ditampilkan di sini.";
+
+document.getElementById("financeDescription").innerHTML="Informasi keuangan tersedia pada versi lengkap.";
+
+document.getElementById("libraryDescription").innerHTML="Layanan perpustakaan belum tersedia.";
+
+document.getElementById("settingsDescription").innerHTML="Pengaturan profil tersedia pada versi lengkap.";
+
+}else{
+
+location.reload();
+
+}
+
+};
+
+document.getElementById("logout").onclick=function(e){
+
+e.preventDefault();
+
+const answer=confirm("Sign out from the Student Portal?");
+
+if(!answer){
+
+return;
+
+}
+
+portal.style.display="none";
+
+loadingPage.style.display="none";
+
+loginPage.style.display="flex";
+
+document.getElementById("password").value="";
+
+progress.style.width="0%";
+
+percent.innerHTML="0%";
+
+loadingTitle.innerHTML="Authenticating...";
+
+};
+
+</script>
+
+</body>
+
+</html>  
+  
+  
